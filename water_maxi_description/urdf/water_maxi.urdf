@@ -12,12 +12,23 @@
         <color rgba="0 0.8 0 1"/>
       </material>
     </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://water_maxi_description/models/Base_Link.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+   <inertial>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    <mass value="1000.0"/>
+    <inertia ixx="100.0" ixy="0.0" ixz="0.0" iyy="100.0" iyz="0.0" izz="100.0"/>
+   </inertial>
+   
   </link>
 
   <joint name="world_to_Base" type="fixed">
     <parent link="world"/>
     <child link="base_link"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0 0 0.065" rpy="0 0 0"/>
     <axis xyz="0 0 0"/>
   </joint>
 
@@ -30,14 +41,37 @@
         <color rgba="0.8 0.8 0.8 1"/>
       </material>   
     </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://water_maxi_description/models/SchwenkArm_Link.stl" scale="0.01 0.01 0.01"/>        
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <mass value="15.0"/>
+      <inertia ixx="100.0" ixy="0.0" ixz="0.0" iyy="100.0" iyz="0.0" izz="100.0"/>
+    </inertial>
+    
   </link>
 
   <joint name="base_to_schwenkarm" type="continuous">
     <parent link="base_link"/>
     <child link="arm_link1"/>    
     <origin xyz="-0.55 0 2" rpy="0.0 1.57 -1.57"/>  
-    <axis xyz="0.0 1.0 0.0"/>
-      
+    <axis xyz="0.0 1.0 0.0"/>      
   </joint>
+
+  <transmission name="transmission_base_to_link1">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="base_to_schwenkarm" type="revolute">
+         <hardwareInterface>hardwareInterface/PositionJointInterface</hardwareInterface>      
+  </joint>
+  <actuator name="motor_base_link_to_link1">
+  </actuator>
+  </transmission>
+
+  <gazebo>
+    <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control"></plugin>
+  </gazebo>
 
 </robot>
