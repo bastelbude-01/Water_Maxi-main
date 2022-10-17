@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
 <robot name="water_maxi">
+
   <link name="world"/>
+
   <link name="base_link">
-    <visual name="Base">
+    <visual name="base">
       <geometry>
         <mesh filename="package://water_maxi_description/models/Base_Link.stl" scale="0.01 0.01 0.01"/>
       </geometry>
-      <material>
+      <material name="green">
         <color rgba="0 0.8 0 1"/>
       </material>
     </visual>
@@ -20,14 +22,17 @@
   </joint>
 
   <link name="arm_link1">
-    <visual name="schwenkarm">
+    <visual>
       <geometry>
         <mesh filename="package://water_maxi_description/models/SchwenkArm_Link.stl" scale="0.01 0.01 0.01"/>        
-      </geometry>      
+      </geometry>   
+      <material name="grey">
+        <color rgba="0.8 0.8 0.8 1"/>
+      </material>   
     </visual>
   </link>
 
-  <joint name="base_to_arm" type="continuous">
+  <joint name="base_to_schwenkarm" type="continuous">
     <parent link="base_link"/>
     <child link="arm_link1"/>    
     <origin xyz="-0.55 0 2" rpy="0.0 1.57 -1.57"/>    
