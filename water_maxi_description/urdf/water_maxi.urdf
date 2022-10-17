@@ -35,7 +35,9 @@
   <joint name="base_to_schwenkarm" type="continuous">
     <parent link="base_link"/>
     <child link="arm_link1"/>    
-    <origin xyz="-0.55 0 2" rpy="0.0 1.57 -1.57"/>    
+    <origin xyz="-0.55 0 2" rpy="0.0 1.57 -1.57"/>  
+    <axis xyz="0.0 1.0 0.0"/>
+      
   </joint>
 
 </robot>
