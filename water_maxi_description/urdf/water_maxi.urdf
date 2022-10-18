@@ -64,7 +64,7 @@
   <transmission name="transmission_base_to_link1">
   <type>transmission_interface/SimpleTransmission</type>
   <joint name="base_to_schwenkarm" type="revolute">
-         <hardwareInterface>hardwareInterface/PositionJointInterface</hardwareInterface>      
+         <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>      
   </joint>
   <actuator name="motor_base_link_to_link1">
   </actuator>
