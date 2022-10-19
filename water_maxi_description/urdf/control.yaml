@@ -4,4 +4,4 @@ water_maxi_joint1_controller:
 
 gazebo_ros_control:
   pid_gains:
-    base_to_schwenkarm: {p: 50.0 , i: 0.01 , d: 8.0 }
+    base_to_schwenkarm: {p: 20.0 , i: 0.03 , d: 2.0 }
